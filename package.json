@@ -29,6 +29,7 @@
   "dependencies": {
     "@abraham/reflection": "^0.7.0",
     "@reduxjs/toolkit": "^1.4.0",
+    "@vaadin/router": "^1.7.2",
     "document-register-element": "^1.14.5",
     "lit-element": "^2.3.1",
     "reflect-metadata": "^0.1.13",

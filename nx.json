@@ -33,6 +33,9 @@
     },
     "project1-api-user": {
       "tags": []
+    },
+    "project1-views-users": {
+      "tags": []
     }
   }
 }

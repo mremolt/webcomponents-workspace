@@ -27,7 +27,8 @@
     "paths": {
       "@mr/core": ["libs/core/src/index.ts"],
       "@mr/project1/data/user": ["libs/project1/data/user/src/index.ts"],
-      "@mr/project1/api/user": ["libs/project1/api/user/src/index.ts"]
+      "@mr/project1/api/user": ["libs/project1/api/user/src/index.ts"],
+      "@mr/project1/views/users": ["libs/project1/views/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
