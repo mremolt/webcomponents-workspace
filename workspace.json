@@ -1,7 +1,169 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "reference-app": {
+      "root": "apps/reference-app",
+      "sourceRoot": "apps/reference-app/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/reference-app",
+            "index": "apps/reference-app/src/index.html",
+            "main": "apps/reference-app/src/main.ts",
+            "polyfills": "apps/reference-app/src/polyfills.ts",
+            "tsConfig": "apps/reference-app/tsconfig.app.json",
+            "assets": [
+              "apps/reference-app/src/favicon.ico",
+              "apps/reference-app/src/assets"
+            ],
+            "styles": ["apps/reference-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/reference-app/src/environments/environment.ts",
+                  "with": "apps/reference-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "reference-app:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "reference-app:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/reference-app/tsconfig.app.json",
+              "apps/reference-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/reference-app/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/reference-app/jest.config.js",
+            "tsConfig": "apps/reference-app/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/reference-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "core": {
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/core/tsconfig.lib.json",
+              "libs/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "tsConfig": "libs/core/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "project1-data-user": {
+      "root": "libs/project1/data/user",
+      "sourceRoot": "libs/project1/data/user/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/project1/data/user/tsconfig.lib.json",
+              "libs/project1/data/user/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/project1/data/user/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/project1/data/user/jest.config.js",
+            "tsConfig": "libs/project1/data/user/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "project1-api-user": {
+      "root": "libs/project1/api/user",
+      "sourceRoot": "libs/project1/api/user/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/project1/api/user/tsconfig.lib.json",
+              "libs/project1/api/user/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/project1/api/user/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/project1/api/user/jest.config.js",
+            "tsConfig": "libs/project1/api/user/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/web"
+  },
+  "defaultProject": "reference-app"
 }

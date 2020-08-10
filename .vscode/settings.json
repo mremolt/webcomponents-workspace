@@ -1,0 +1,8 @@
+{
+    "lit-html.tags": [
+        "html",
+        "raw",
+        "css"
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
+}
